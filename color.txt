@@ -1,0 +1,35 @@
+🔹 Option 1: Futuristic & Sleek (Dark Mode First)
+
+Primary: Indigo #4F46E5
+
+Secondary: Cyan #06B6D4
+
+Accent: Emerald #10B981
+
+Background: Dark Gray #111827
+
+Text: White #F9FAFB
+
+Option 2: Friendly & Minimal (Light Mode First)
+
+Primary: Sky Blue #3B82F6
+
+Secondary: Purple #8B5CF6
+
+Accent: Pink #EC4899
+
+Background: Light Gray #F3F4F6
+
+Text: Charcoal #1F2937
+
+Option 3: Bold & Modern (Tech Startup Vibe)
+
+Primary: Electric Purple #9333EA
+
+Secondary: Neon Green #22C55E
+
+Accent: Bright Orange #F97316
+
+Background: White #FFFFFF
+
+Text: Dark Slate #0F172A
