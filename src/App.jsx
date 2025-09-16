@@ -1,11 +1,13 @@
-import SignUp from "./pages/SignUp"
+import LogIn from "./pages/Login";
+import SignUp from "./pages/SignUp";
 const App = () => {
-  return(
-    <>
-      <SignUp/>
-      
-    </>
-  );
-}
+    return (
+        <>
+            {/* <SignUp /> */}
+
+            <LogIn />
+        </>
+    );
+};
 
 export default App;

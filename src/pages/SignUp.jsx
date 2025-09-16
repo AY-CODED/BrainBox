@@ -1,264 +1,153 @@
-import { useState } from "react";
-import LightRays from "../../LightRays"; // Background animation
-import { Mail, Lock, UserPlus, Eye, EyeOff } from "lucide-react"; // Lucide icons
+import React, { useState } from "react";
+import LightRays from "../../LightRays";
+import { MoveRight, Mail, Lock, Eye, EyeOff } from "lucide-react";
+import { SiApple } from "react-icons/si";
+
+// ✅ Make sure to include Poppins font in index.html
+// <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
 
 const SignUp = () => {
-  const [showPassword, setShowPassword] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
 
-  // Handle form submit (connect to backend later)
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form submitted"); 
-  };
-
-  return (
-    <div
-      style={{
-        width: "100%",
-        height: "100vh",
-        position: "relative",
-        backgroundColor: "black",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "1rem",
-        fontFamily: "'Poppins', sans-serif",
-      }}
-    >
-      {/* 🌌 Background light rays */}
-      <LightRays
-        color="#ffffff"
-        speed={0.6}
-        direction="forward"
-        scale={1.1}
-        opacity={0.8}
-        mouseInteractive
-      />
-
-      {/* 🔲 Glassmorphism Sign Up Card */}
-      <div
-        style={{
-          position: "absolute",
-          zIndex: 10,
-          width: "100%",
-          maxWidth: "420px",
-          padding: "2rem",
-          borderRadius: "20px",
-          background: "rgba(255, 255, 255, 0.1)",
-          backdropFilter: "blur(15px) saturate(150%)",
-          WebkitBackdropFilter: "blur(15px) saturate(150%)",
-          border: "1px solid rgba(255, 255, 255, 0.2)",
-          color: "white",
-          boxShadow: "0 8px 32px rgba(255, 255, 255, 0.1)",
-        }}
-      >
-        {/* 📝 Title */}
-        <h2
-          style={{
-            textAlign: "center",
-            marginBottom: "1.5rem",
-            fontWeight: "700",
-            fontSize: "1.8rem",
-            letterSpacing: "0.5px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "8px",
-          }}
-        >
-          <UserPlus size={28} /> Sign Up
-        </h2>
-
-        {/* 📩 Sign Up Form */}
-        <form
-          onSubmit={handleSubmit}
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "1rem",
-          }}
-        >
-          {/* Email field */}
-          <label style={labelStyle}>Enter your Email</label>
-          <div style={inputWrapper}>
-            <Mail size={18} style={iconStyle} />
-            <input
-              name="email"
-              type="email"
-              placeholder="Email"
-              style={inputStyle}
-              required
-            />
-          </div>
-
-          {/* Password field with toggle visibility */}
-          <label style={labelStyle}>Create a Password</label>
-          <div style={{ ...inputWrapper, justifyContent: "space-between" }}>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "0.5rem",
-                flex: 1,
-              }}
-            >
-              <Lock size={18} style={iconStyle} />
-              <input
-                name="password"
-                type={showPassword ? "text" : "password"}
-                placeholder="Password"
-                style={inputStyle}
-                required
-              />
-            </div>
-
-            {/* 👁 Eye toggle button */}
-            <button
-              type="button"
-              onClick={() => setShowPassword((s) => !s)}
-              aria-label={showPassword ? "Hide password" : "Show password"}
-              style={toggleButton}
-            >
-              {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-            </button>
-          </div>
-
-          {/* Submit button */}
-          <button type="submit" style={buttonStyle}>
-            Create Account
-          </button>
-        </form>
-
-        {/* Divider */}
-        <div style={divider}>OR</div>
-
-        {/* 🌐 Social Sign Up */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "0.7rem" }}>
-          <button style={googleButton}>
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg"
-              alt="Google"
-              style={{ width: "20px", marginRight: "10px" }}
-            />
-            Sign up with Google
-          </button>
-
-          <button style={appleButton}>
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg"
-              alt="Apple"
-              style={{ width: "20px", marginRight: "10px" }}
-            />
-            Sign up with Apple
-          </button>
-        </div>
-
-        {/* 🔑 Already have account */}
+    return (
         <div
-          style={{
-            textAlign: "center",
-            marginTop: "1.2rem",
-            fontSize: "0.9rem",
-          }}
+            className="relative flex items-center justify-center w-full h-[600px] bg-black overflow-hidden"
+            style={{ fontFamily: "'Poppins', sans-serif" }}
         >
-          Already have an account?{" "}
-          <a href="/login" style={linkStyle}>
-            Log in
-          </a>
+            {/* Background effect */}
+            <LightRays
+                raysOrigin="top-center"
+                raysColor="#ffffff"
+                raysSpeed={1.5}
+                lightSpread={0.8}
+                rayLength={1.2}
+                followMouse={true}
+                mouseInfluence={0.1}
+                noiseAmount={0.1}
+                distortion={0.05}
+                className="custom-rays"
+            />
+
+            {/* Glassmorphic login card */}
+            <div className="absolute inset-0 flex items-center justify-center mb-10">
+                <div className="w-[350px] bg-white/10 backdrop-blur-md border border-white/20 rounded-xl shadow-lg p-6">
+                    <h1 className="text-white text-2xl font-bold mb-6 text-center">
+                        Signup
+                    </h1>
+
+                    {/* Email */}
+                    <label htmlFor="email" className="block text-white mb-2">
+                        E-mail
+                    </label>
+                    <div className="relative mb-4">
+                        <Mail
+                            className="absolute left-3 top-2.5 text-gray-300"
+                            size={18}
+                        />
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="Enter your email"
+                            className="w-full pl-10 pr-3 py-2 rounded-md bg-white/20 text-white placeholder-gray-300 
+                             focus:outline-none focus:ring-2 focus:ring-white/40"
+                        />
+                    </div>
+
+                    {/* Password */}
+                    <label htmlFor="password" className="block text-white mb-2">
+                        Password
+                    </label>
+                    <div className="relative mb-6">
+                        <Lock
+                            className="absolute left-3 top-2.5 text-gray-300"
+                            size={18}
+                        />
+                        <input
+                            type={showPassword ? "text" : "password"}
+                            id="password"
+                            placeholder="Enter your password"
+                            className="w-full pl-10 pr-10 py-2 rounded-md bg-white/20 text-white placeholder-gray-300 
+                             focus:outline-none focus:ring-2 focus:ring-white/40"
+                        />
+                        {/* 👁 Show/Hide password button */}
+                        <button
+                            type="button"
+                            onClick={() => setShowPassword((prev) => !prev)}
+                            className="absolute right-3 top-2.5 text-gray-300 hover:text-white"
+                        >
+                            {showPassword ? (
+                                <EyeOff size={18} />
+                            ) : (
+                                <Eye size={18} />
+                            )}
+                        </button>
+                    </div>
+
+                    {/* Submit Button */}
+                    <button
+                        type="submit"
+                        className="w-full py-2 rounded-md bg-white text-black font-semibold 
+                           hover:bg-gray-200 transition flex items-center justify-center gap-2"
+                    >
+                        Sign In
+                        <MoveRight size={18} />
+                    </button>
+
+                    {/* OR Separator */}
+                    <p className="text-center mt-5 text-sm text-gray-300">OR</p>
+
+                    {/* Social Login */}
+                    <div className="mt-5 flex flex-col gap-3">
+                        <button
+                            className="w-full py-2 rounded-md bg-white/20 border border-white/30 text-white font-medium 
+                                   flex items-center justify-center gap-2 hover:bg-white/30 transition"
+                        >
+                            {/* Google SVG */}
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="w-5 h-5"
+                                viewBox="0 0 488 512"
+                            >
+                                <path
+                                    fill="#4285F4"
+                                    d="M488 261.8c0-17.4-1.6-34.1-4.6-50.4H249v95.3h134.3c-5.8 31.3-23 57.7-49.2 75.5l79.6 61.9c46.5-42.9 74.3-106.2 74.3-182.3z"
+                                />
+                                <path
+                                    fill="#34A853"
+                                    d="M249 492c66.7 0 122.6-22.1 163.4-59.9l-79.6-61.9c-22.1 14.8-50.5 23.7-83.8 23.7-64.4 0-119-43.5-138.5-102.1l-81.2 62.8C72.7 444.7 154.4 492 249 492z"
+                                />
+                                <path
+                                    fill="#FBBC05"
+                                    d="M110.5 291.8c-4.8-14.5-7.5-29.9-7.5-45.8s2.7-31.3 7.5-45.8l-81.2-62.8C11 169.1 0 208.5 0 246s11 76.9 29.3 108.6l81.2-62.8z"
+                                />
+                                <path
+                                    fill="#EA4335"
+                                    d="M249 97.6c36.2 0 68.7 12.5 94.3 36.9l70.6-70.6C371.6 23.2 315.7 0 249 0 154.4 0 72.7 47.3 29.3 137.4l81.2 62.8C130 141.1 184.6 97.6 249 97.6z"
+                                />
+                            </svg>
+                            Sign in with Google
+                        </button>
+                        <button
+                            className="w-full py-2 rounded-md bg-white/20 border border-white/30 text-white font-medium 
+                                   flex items-center justify-center gap-2 hover:bg-white/30 transition"
+                        >
+                            <SiApple size={18} color="#fff" /> Sign in with
+                            Apple
+                        </button>
+                        <p className="text-center mt-6 text-sm text-gray-300">
+                            Already have an account?{" "}
+                            <a
+                                href="/login"
+                                className="text-white font-medium hover:underline"
+                            >
+                                Login
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
-};
-
-/* ---------- 🔹 Styles (Reusable) ---------- */
-const labelStyle = {
-  fontWeight: "500",
-  fontSize: "0.9rem",
-};
-
-const inputWrapper = {
-  display: "flex",
-  alignItems: "center",
-  background: "rgba(255, 255, 255, 0.2)",
-  borderRadius: "10px",
-  padding: "0.6rem 0.8rem",
-  gap: "0.5rem",
-};
-
-const inputStyle = {
-  flex: 1,
-  border: "none",
-  outline: "none",
-  background: "transparent",
-  color: "white",
-  fontSize: "1rem",
-  fontFamily: "'Poppins', sans-serif",
-};
-
-const iconStyle = {
-  color: "white",
-  opacity: 0.9,
-};
-
-const toggleButton = {
-  background: "transparent",
-  border: "none",
-  cursor: "pointer",
-  padding: "4px",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  color: "white",
-  opacity: 0.9,
-};
-
-const buttonStyle = {
-  padding: "0.9rem",
-  borderRadius: "10px",
-  border: "none",
-  background: "white",
-  color: "black",
-  fontWeight: "600",
-  fontSize: "1rem",
-  cursor: "pointer",
-  transition: "0.3s",
-  width: "100%",
-  fontFamily: "'Poppins', sans-serif",
-  letterSpacing: "0.5px",
-};
-
-const divider = {
-  textAlign: "center",
-  margin: "1rem 0",
-  color: "white",
-  fontWeight: "500",
-};
-
-const linkStyle = {
-  color: "#ffffff",
-  fontWeight: "600",
-  textDecoration: "underline",
-  cursor: "pointer",
-};
-
-const googleButton = {
-  ...buttonStyle,
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  background: "white",
-  border: "1px solid #ddd",
-};
-
-const appleButton = {
-  ...buttonStyle,
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  background: "white",
-  color: "black",
-  border: "1px solid rgba(255,255,255,0.3)",
+    );
 };
 
 export default SignUp;
