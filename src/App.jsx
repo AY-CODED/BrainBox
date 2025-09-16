@@ -3,7 +3,7 @@ import SignUp from "./pages/SignUp"
 const App = () => {
   return(
     <>
-     <Login />
+    <SignUp />
     </>
   );
 }
