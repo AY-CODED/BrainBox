@@ -12,6 +12,7 @@ const SignUp = () => {
                 mouseInteractive={true}
             />
         </div>
+        
     );
 };
 
